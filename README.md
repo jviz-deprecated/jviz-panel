@@ -1,0 +1,2 @@
+# jviz-panel
+Panel component
