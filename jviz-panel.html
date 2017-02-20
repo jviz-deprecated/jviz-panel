@@ -1,0 +1,174 @@
+<!--
+@license
+Copyright (c) 2016 The Jviz Project Authors. All rights reserved.
+The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob/dev/LICENSE
+-->
+
+<!-- Panel components -->
+<link rel="import" href="./jviz-panel-head.html">
+<link rel="import" href="./jviz-panel-body.html">
+<link rel="import" href="./jviz-panel-foot.html">
+
+<!-- Panel module -->
+<dom-module id="jviz-panel">
+  <template>
+    <style>
+      /* Variables and mixins */
+      :host
+      {
+        /* Padding */
+        --jviz-panel-padding: 6px;
+      }
+      /* Panel style */
+      :host
+      {
+      	display: block;
+        width: calc(100% - var(--jviz-panel-padding) * 2);
+        font-family: var(--jviz-font-family);
+        font-size: var(--jviz-font-size);
+        color: var(--jviz-font-color);
+      	border-radius: 5px;
+      	background-color: var(--jviz-grey-2);
+      	margin-bottom: 0px;
+        padding: var(--jviz-panel-padding);
+      }
+
+      /* Panel closed */
+      :host[panel-closed] ::content .panel-body { display: none; }
+      :host[panel-closed] ::content .panel-foot { display: none; }
+
+      /* &--closed > &-head-arrow { transform: rotate(180deg); } */
+
+      /* Head content */
+      :host ::content .panel-head
+      {
+        display: block;
+        width: 100%;
+        height: 26px;
+        line-height: 26px;
+        @apply(--jviz-font);
+      }
+
+      /* Head arrow */
+      :host ::content .panel-head-arrow
+      {
+        display: none;
+        float: left;
+        margin-right: 5px;
+        margin-left: 0px;
+        cursor: pointer;
+        width: 26px;
+        height: 26px;
+        transition: all 0.3s;
+        background-color: var(--jviz-grey-1);
+        border-radius: 5px;
+      }
+
+      /* Head arrow hover */
+      :host ::content .panel-head-arrow:hover { background-color: var(--jviz-grey-0); }
+
+      /* Head arrow is active */
+      :host[panel-arrow] ::content .panel-head-arrow { display: inline-block; }
+
+      /* Head info block */
+      :host ::content .panel-head-info
+      {
+        display: inline-block;
+        float: left;
+        height: 26px;
+        border-radius: 5px;
+        background-color: var(--jviz-grey-1);
+        @apply(--jviz-font);
+        font-size: 15px;
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-right: 5px;
+      }
+
+      /* Head info title */
+      :host ::content .panel-head-info .panel-head-info-title
+      {
+        display: inline-block;
+        font-weight: bold;
+        margin-right: 3px;
+        margin-left: 3px;
+      }
+
+      /* Head info detail */
+      :host ::content .panel-head-info .panel-head-info-detail
+      {
+        display: inline-block;
+        font-weight: normal;
+        color: var(--jviz-navy-3);
+        font-size: 13px;
+        margin-right: 3px;
+        margin-left: 3px;
+      }
+
+      /* Body content */
+      :host ::content .panel-body
+      {
+        display: block;
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 0px;
+      }
+
+      /* Foot content */
+      :host ::content .panel-foot
+      {
+        display: block;
+        width: 100%;
+        border-top: 1px solid var(--jviz-grey-1);
+        color: var(--jviz-navy-3);
+        font-size: 14px;
+        padding-top: 5px;
+        margin-top: 5px;
+      }
+
+    </style>
+    <!-- Head content -->
+    <div id="panel-head" class="panel-head">
+      <!-- Head arrow -->
+      <div id="panel-head-arrow" class="panel-head-arrow" on-tap="toggle_closed"></div>
+      <!-- Head info block -->
+      <div id="panel-head-info" class="panel-head-info">
+        <!-- Panel title -->
+        <div id="panel-head-info-title" class="panel-head-info-title">{{ panelTitle }}</div>
+        <!-- Panel detail -->
+        <div id="panel-head-info-detail" class="panel-head-info-detail">{{ panelDetail }}</div>
+      </div>
+      <!-- Head content -->
+      <content select="jviz-panel-head"></content>
+    </div>
+    <!-- Body content -->
+    <div id="panel-body" class="panel-body">
+      <content select="jviz-panel-body"></content>
+    </div>
+    <!-- Foot content -->
+    <div id="panel-foot" class="panel-foot">
+      <content select="jviz-panel-foot"></content>
+    </div>
+  </template>
+</dom-module>
+
+<!-- Panel logic -->
+<script>
+
+//Initialize the component
+jviz.components.panel = { is: 'jviz-panel' };
+
+//Initialize the properties
+jviz.components.panel.properties = {};
+jviz.components.panel.properties.panelTitle = { type: String, value: '', reflectToAttribute: true };
+jviz.components.panel.properties.panelDetail = { type: String, value: '', reflectToAttribute: true };
+jviz.components.panel.properties.panelArrow = { type: Boolean, value: true, reflectToAttribute: true };
+jviz.components.panel.properties.panelClosed = { type: Boolean, value: false, reflectToAttribute: true };
+
+//Toggle panel closed
+jviz.components.panel.toggle_closed = function(){ this.panelClosed = !this.panelClosed; };
+
+</script>
+
+<!-- Initialize the panel element -->
+<script>Polymer(jviz.components.panel);</script>
