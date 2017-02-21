@@ -194,6 +194,18 @@ jviz.components.panel.properties.panelLoading = { type: Boolean, value: false, r
 //Toggle panel closed
 jviz.components.panel.toggle_closed = function(){ this.panelClosed = !this.panelClosed; };
 
+//Set the panel title
+jviz.components.panel.set_title = function(value){ this.panelTitle = value; };
+
+//Get the panel title value
+jviz.components.panel.get_title = function(){ return this.panelTitle; };
+
+//Set the panel detail
+jviz.components.panel.set_detail = function(value){ this.panelDetail = value; };
+
+//Get the panel detail value
+jviz.components.panel.get_detail = function(){ return this.panelDetail; }; 
+
 </script>
 
 <!-- Initialize the panel element -->
