@@ -204,7 +204,33 @@ jviz.components.panel.get_title = function(){ return this.panelTitle; };
 jviz.components.panel.set_detail = function(value){ this.panelDetail = value; };
 
 //Get the panel detail value
-jviz.components.panel.get_detail = function(){ return this.panelDetail; }; 
+jviz.components.panel.get_detail = function(){ return this.panelDetail; };
+
+//Set loading
+jviz.components.panel.set_loading = function(value)
+{
+  //Check for boolean
+  if(typeof value !== 'boolean'){ return; }
+
+  //Set the panel loading
+  this.panelLoading = value;
+};
+
+//Get if panel is loading
+jviz.components.panel.get_loading = function(){ return this.panelLoading; };
+
+//Set closed
+jviz.components.panel.set_closed = function(value)
+{
+  //Check for boolean
+  if(typeof value !== 'boolean'){ return; }
+
+  //Set the panel closed
+  this.panelClosed = value;
+};
+
+//Get if panel is closed
+jviz.components.panel.get_closed = function(){ return this.panelClosed; };
 
 </script>
 
