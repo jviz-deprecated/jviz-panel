@@ -10,7 +10,8 @@
   {
     "jviz": "https://github.com/jviz/jviz.git#dev",
     "jviz-styles": "https://github.com/jviz/jviz-styles.git#dev",
-    "jviz-loading": "https://github.com/jviz/jviz-loading.git#dev"
+    "jviz-loading": "https://github.com/jviz/jviz-loading.git#dev",
+    "jviz-btn": "https://github.com/jviz/jviz-btn.git#dev"
   },
 	"license": "MIT",
   "authors": [ "Josemi Juanes <josemijuanes@gmail.com>" ],
