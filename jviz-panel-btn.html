@@ -1,0 +1,46 @@
+<!--
+@license
+Copyright (c) 2016 The Jviz Project Authors. All rights reserved.
+The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob/dev/LICENSE
+-->
+
+<!-- Import dependencies -->
+<link rel="import" href="../jviz-btn/jviz-btn.html">
+
+<!-- Panel btn template -->
+<dom-module id="jviz-panel-btn">
+  <template>
+    <style>
+      /* Button main style */
+      :host ::content .panel-btn
+      {
+        @apply(--jviz-btn);
+        float: right !important;
+        height: 26px !important;
+        line-height: 26px !important;
+        margin-left: 5px !important;
+      }
+
+    </style>
+    <!-- Button -->
+    <jviz-btn id="panel-btn" btn-color="{{ btnColor }}" btn-disabled="{{ btnDisabled }}" class="panel-btn">
+      <content></content>
+    </jviz-btn>
+  </template>
+</dom-module>
+
+<!-- Panel button logic -->
+<script>
+
+//Initialize the panel button
+jviz.components.panel_btn = { is: 'jviz-panel-btn' };
+
+//Add properties
+jviz.components.panel_btn.properties = {};
+jviz.components.panel_btn.properties.btnColor = { type: String, value: 'blue', reflectToAttribute: true };
+jviz.components.panel_btn.properties.btnDisabled = { type: Boolean, value: false, reflectToAttribute: true };
+
+</script>
+
+<!-- Initialize the panel btn component -->
+<script> Polymer({ is: 'jviz-panel-btn' }); </script>
