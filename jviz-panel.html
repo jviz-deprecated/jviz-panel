@@ -4,10 +4,14 @@ Copyright (c) 2016 The Jviz Project Authors. All rights reserved.
 The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob/dev/LICENSE
 -->
 
+<!-- Import dependencies -->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../jviz/jviz.html">
+<link rel="import" href="../jviz-styles/jviz-styles.html">
+<link rel="import" href="../jviz-loading/jviz-loading.html">
+
 <!-- Panel components -->
-<link rel="import" href="./jviz-panel-head.html">
-<link rel="import" href="./jviz-panel-body.html">
-<link rel="import" href="./jviz-panel-foot.html">
+<link rel="import" href="jviz-panel-btn.html">
 
 <!-- Panel module -->
 <dom-module id="jviz-panel">
@@ -36,8 +40,6 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
       /* Panel closed */
       :host[panel-closed] ::content .panel-body { display: none; }
       :host[panel-closed] ::content .panel-foot { display: none; }
-
-      /* &--closed > &-head-arrow { transform: rotate(180deg); } */
 
       /* Head content */
       :host ::content .panel-head
@@ -69,6 +71,9 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 
       /* Head arrow is active */
       :host[panel-arrow] ::content .panel-head-arrow { display: inline-block; }
+
+      /* Panel is closed */
+      :host[panel-closed] ::content .panel-head-arrow { transform: rotate(180deg); }
 
       /* Head info block */
       :host ::content .panel-head-info
@@ -105,6 +110,22 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         margin-left: 3px;
       }
 
+      /* Head loading */
+      :host ::content .panel-head-loading
+      {
+        display: none;
+        width: 35px;
+        height: 18px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 8px;
+      }
+
+      /* Panel loading visible */
+      :host[panel-loading] ::content .panel-head-loading { display: inline-block; }
+
       /* Body content */
       :host ::content .panel-body
       {
@@ -138,6 +159,10 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         <!-- Panel detail -->
         <div id="panel-head-info-detail" class="panel-head-info-detail">{{ panelDetail }}</div>
       </div>
+      <!-- Head loading -->
+      <div id="panel-head-loading" class="panel-head-loading">
+        <jviz-loading loading-color="navy" loading-width="8px"></jviz-loading>
+      </div>
       <!-- Head content -->
       <content select="jviz-panel-head"></content>
     </div>
@@ -164,6 +189,7 @@ jviz.components.panel.properties.panelTitle = { type: String, value: '', reflect
 jviz.components.panel.properties.panelDetail = { type: String, value: '', reflectToAttribute: true };
 jviz.components.panel.properties.panelArrow = { type: Boolean, value: true, reflectToAttribute: true };
 jviz.components.panel.properties.panelClosed = { type: Boolean, value: false, reflectToAttribute: true };
+jviz.components.panel.properties.panelLoading = { type: Boolean, value: false, reflectToAttribute: true };
 
 //Toggle panel closed
 jviz.components.panel.toggle_closed = function(){ this.panelClosed = !this.panelClosed; };
