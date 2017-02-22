@@ -9,9 +9,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 <link rel="import" href="../jviz/jviz.html">
 <link rel="import" href="../jviz-styles/jviz-styles.html">
 <link rel="import" href="../jviz-loading/jviz-loading.html">
-
-<!-- Panel components -->
-<link rel="import" href="jviz-panel-btn.html">
+<link rel="import" href="../jviz-btn/jviz-btn.html">
 
 <!-- Panel module -->
 <dom-module id="jviz-panel">
@@ -23,6 +21,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         /* Padding */
         --jviz-panel-padding: 6px;
       }
+      
       /* Panel style */
       :host
       {
@@ -145,6 +144,16 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         font-size: 14px;
         padding-top: 5px;
         margin-top: 5px;
+      }
+
+      /* Apply to all button on the header */
+      :host ::content .panel-head jviz-btn
+      {
+        float: right !important;
+        height: 26px !important;
+        line-height: 26px !important;
+        margin-left: 5px !important;
+        font-size: 13px !important;
       }
 
     </style>
