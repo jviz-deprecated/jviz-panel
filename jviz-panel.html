@@ -10,6 +10,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 <link rel="import" href="../jviz-styles/jviz-styles.html">
 <link rel="import" href="../jviz-loading/jviz-loading.html">
 <link rel="import" href="../jviz-btn/jviz-btn.html">
+<link rel="import" href="../jviz-icons/jviz-icons.html">
 
 <!-- Panel module -->
 <dom-module id="jviz-panel">
@@ -160,7 +161,9 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
     <!-- Head content -->
     <div id="panel-head" class="panel-head">
       <!-- Head arrow -->
-      <div id="panel-head-arrow" class="panel-head-arrow" on-tap="toggle_closed"></div>
+      <div id="panel-head-arrow" class="panel-head-arrow" on-tap="toggle_closed">
+        <jviz-icons icon-image="chevron_up" icon-size="26px" icon-color="navy"></jviz-icons>
+      </div>
       <!-- Head info block -->
       <div id="panel-head-info" class="panel-head-info">
         <!-- Panel title -->
