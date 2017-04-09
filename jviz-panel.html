@@ -38,8 +38,8 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
       }
 
       /* Panel closed */
-      :host[panel-closed] ::content .panel-body { display: none; }
-      :host[panel-closed] ::content .panel-foot { display: none; }
+      :host[closed] ::content .panel-body { display: none; }
+      :host[closed] ::content .panel-foot { display: none; }
 
       /* Head content */
       :host ::content .panel-head
@@ -70,10 +70,10 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
       :host ::content .panel-head-arrow:hover { background-color: var(--jviz-grey-0); }
 
       /* Head arrow is active */
-      :host[panel-arrow] ::content .panel-head-arrow { display: inline-block; }
+      :host[arrow] ::content .panel-head-arrow { display: inline-block; }
 
       /* Panel is closed */
-      :host[panel-closed] ::content .panel-head-arrow { transform: rotate(180deg); }
+      :host[closed] ::content .panel-head-arrow { transform: rotate(180deg); }
 
       /* Head info block */
       :host ::content .panel-head-info
@@ -124,7 +124,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
       }
 
       /* Panel loading visible */
-      :host[panel-loading] ::content .panel-head-loading { display: inline-block; }
+      :host[loading] ::content .panel-head-loading { display: inline-block; }
 
       /* Body content */
       :host ::content .panel-body
@@ -162,18 +162,18 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
     <div id="panel-head" class="panel-head">
       <!-- Head arrow -->
       <div id="panel-head-arrow" class="panel-head-arrow" on-tap="toggle_closed">
-        <jviz-icons icon-image="chevron_up" icon-size="26px" icon-color="navy"></jviz-icons>
+        <jviz-icons image="chevron_up" size="26px" color="navy"></jviz-icons>
       </div>
       <!-- Head info block -->
       <div id="panel-head-info" class="panel-head-info">
         <!-- Panel title -->
-        <div id="panel-head-info-title" class="panel-head-info-title">{{ panelTitle }}</div>
+        <div id="panel-head-info-title" class="panel-head-info-title">{{ header }}</div>
         <!-- Panel detail -->
-        <div id="panel-head-info-detail" class="panel-head-info-detail">{{ panelDetail }}</div>
+        <div id="panel-head-info-detail" class="panel-head-info-detail">{{ detail }}</div>
       </div>
       <!-- Head loading -->
       <div id="panel-head-loading" class="panel-head-loading">
-        <jviz-loading loading-color="navy" loading-width="8px"></jviz-loading>
+        <jviz-loading color="navy" width="8px"></jviz-loading>
       </div>
       <!-- Head content -->
       <content select="jviz-panel-head"></content>
@@ -193,33 +193,33 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 <script>
 
 //Initialize the component
-jviz.components.panel = { is: 'jviz-panel' };
+var jviz_panel = { is: 'jviz-panel' };
 
 //Initialize the properties
-jviz.components.panel.properties = {};
-jviz.components.panel.properties.panelTitle = { type: String, value: '', reflectToAttribute: true };
-jviz.components.panel.properties.panelDetail = { type: String, value: '', reflectToAttribute: true };
-jviz.components.panel.properties.panelArrow = { type: Boolean, value: true, reflectToAttribute: true };
-jviz.components.panel.properties.panelClosed = { type: Boolean, value: false, reflectToAttribute: true };
-jviz.components.panel.properties.panelLoading = { type: Boolean, value: false, reflectToAttribute: true };
+jviz_panel.properties = {};
+jviz_panel.properties.panelTitle = { type: String, value: '', reflectToAttribute: true };
+jviz_panel.properties.panelDetail = { type: String, value: '', reflectToAttribute: true };
+jviz_panel.properties.panelArrow = { type: Boolean, value: true, reflectToAttribute: true };
+jviz_panel.properties.panelClosed = { type: Boolean, value: false, reflectToAttribute: true };
+jviz_panel.properties.panelLoading = { type: Boolean, value: false, reflectToAttribute: true };
 
 //Toggle panel closed
-jviz.components.panel.toggle_closed = function(){ this.panelClosed = !this.panelClosed; };
+jviz_panel.toggle_closed = function(){ this.panelClosed = !this.panelClosed; };
 
 //Set the panel title
-jviz.components.panel.set_title = function(value){ this.panelTitle = value; };
+jviz_panel.set_title = function(value){ this.panelTitle = value; };
 
 //Get the panel title value
-jviz.components.panel.get_title = function(){ return this.panelTitle; };
+jviz_panel.get_title = function(){ return this.panelTitle; };
 
 //Set the panel detail
-jviz.components.panel.set_detail = function(value){ this.panelDetail = value; };
+jviz_panel.set_detail = function(value){ this.panelDetail = value; };
 
 //Get the panel detail value
-jviz.components.panel.get_detail = function(){ return this.panelDetail; };
+jviz_panel.get_detail = function(){ return this.panelDetail; };
 
 //Set loading
-jviz.components.panel.set_loading = function(value)
+jviz_panel.set_loading = function(value)
 {
   //Check for boolean
   if(typeof value !== 'boolean'){ return; }
@@ -229,10 +229,10 @@ jviz.components.panel.set_loading = function(value)
 };
 
 //Get if panel is loading
-jviz.components.panel.get_loading = function(){ return this.panelLoading; };
+jviz_panel.get_loading = function(){ return this.panelLoading; };
 
 //Set closed
-jviz.components.panel.set_closed = function(value)
+jviz_panel.set_closed = function(value)
 {
   //Check for boolean
   if(typeof value !== 'boolean'){ return; }
@@ -242,9 +242,9 @@ jviz.components.panel.set_closed = function(value)
 };
 
 //Get if panel is closed
-jviz.components.panel.get_closed = function(){ return this.panelClosed; };
+jviz_panel.get_closed = function(){ return this.panelClosed; };
 
 </script>
 
 <!-- Initialize the panel element -->
-<script>Polymer(jviz.components.panel);</script>
+<script>Polymer(jviz_panel);</script>
