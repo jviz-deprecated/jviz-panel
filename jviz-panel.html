@@ -163,6 +163,26 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         font-size: 13px !important;
       }
 
+      /* Panel top position */
+      :host[positon="top"]
+      {
+        border-bottom-left-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+      }
+
+      /* Panel middle position */
+      :host[position="middle"]
+      {
+        border-radius: 0px !important;
+      }
+
+      /* Panel bottom position */
+      :host[position="bottom"]
+      {
+        border-top-left-radius: 0px !important;
+        border-top-right-radius: 0px !important;
+      }
+
     </style>
     <!-- Head content -->
     <div id="panel-head" class="panel-head">
@@ -210,6 +230,7 @@ jviz_panel.properties.closed = { type: Boolean, value: false, reflectToAttribute
 jviz_panel.properties.loading = { type: Boolean, value: false, reflectToAttribute: true };
 jviz_panel.properties.noHeader = { type: Boolean, value: false, reflectToAttribute: true };
 jviz_panel.properties.noFooter = { type: Boolean, value: false, reflectToAttribute: true };
+jviz_panel.properties.position = { type: String, reflectToAttribute: true };
 
 //Toggle panel closed
 jviz_panel.toggle = function(){ this.closed = !this.closed; };
