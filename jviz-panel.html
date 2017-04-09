@@ -161,7 +161,7 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
     <!-- Head content -->
     <div id="panel-head" class="panel-head">
       <!-- Head arrow -->
-      <div id="panel-head-arrow" class="panel-head-arrow" on-tap="toggle_closed">
+      <div id="panel-head-arrow" class="panel-head-arrow" on-tap="toggle">
         <jviz-icons image="chevron_up" size="26px" color="navy"></jviz-icons>
       </div>
       <!-- Head info block -->
@@ -197,54 +197,17 @@ var jviz_panel = { is: 'jviz-panel' };
 
 //Initialize the properties
 jviz_panel.properties = {};
-jviz_panel.properties.panelTitle = { type: String, value: '', reflectToAttribute: true };
-jviz_panel.properties.panelDetail = { type: String, value: '', reflectToAttribute: true };
-jviz_panel.properties.panelArrow = { type: Boolean, value: true, reflectToAttribute: true };
-jviz_panel.properties.panelClosed = { type: Boolean, value: false, reflectToAttribute: true };
-jviz_panel.properties.panelLoading = { type: Boolean, value: false, reflectToAttribute: true };
+jviz_panel.properties.header = { type: String, value: '', reflectToAttribute: true };
+jviz_panel.properties.detail = { type: String, value: '', reflectToAttribute: true };
+jviz_panel.properties.arrow = { type: Boolean, value: true, reflectToAttribute: true };
+jviz_panel.properties.closed = { type: Boolean, value: false, reflectToAttribute: true };
+jviz_panel.properties.loading = { type: Boolean, value: false, reflectToAttribute: true };
 
 //Toggle panel closed
-jviz_panel.toggle_closed = function(){ this.panelClosed = !this.panelClosed; };
+jviz_panel.toggle = function(){ this.closed = !this.closed; };
 
-//Set the panel title
-jviz_panel.set_title = function(value){ this.panelTitle = value; };
-
-//Get the panel title value
-jviz_panel.get_title = function(){ return this.panelTitle; };
-
-//Set the panel detail
-jviz_panel.set_detail = function(value){ this.panelDetail = value; };
-
-//Get the panel detail value
-jviz_panel.get_detail = function(){ return this.panelDetail; };
-
-//Set loading
-jviz_panel.set_loading = function(value)
-{
-  //Check for boolean
-  if(typeof value !== 'boolean'){ return; }
-
-  //Set the panel loading
-  this.panelLoading = value;
-};
-
-//Get if panel is loading
-jviz_panel.get_loading = function(){ return this.panelLoading; };
-
-//Set closed
-jviz_panel.set_closed = function(value)
-{
-  //Check for boolean
-  if(typeof value !== 'boolean'){ return; }
-
-  //Set the panel closed
-  this.panelClosed = value;
-};
-
-//Get if panel is closed
-jviz_panel.get_closed = function(){ return this.panelClosed; };
+//Initialize the panel element
+Polymer(jviz_panel);
 
 </script>
 
-<!-- Initialize the panel element -->
-<script>Polymer(jviz_panel);</script>
