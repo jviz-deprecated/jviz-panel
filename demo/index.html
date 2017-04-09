@@ -18,4 +18,14 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
 </jviz-panel>
 
 <!-- Test script -->
-<script></script>
+<script>
+  //Initialize the panel element
+  var el = null;
+
+  //Ready method
+  jviz.dom.ready(function()
+  {
+    //Get the panel element
+    el = jviz.dom.id('test');
+  });
+</script>
