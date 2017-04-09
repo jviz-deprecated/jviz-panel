@@ -51,6 +51,9 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         @apply(--jviz-font);
       }
 
+      /* Hide panel head */
+      :host[no-header] ::content .panel-head { display: none !important; }
+
       /* Head arrow */
       :host ::content .panel-head-arrow
       {
@@ -147,6 +150,9 @@ The Jviz Project is under the MIT License. See https://github.com/jviz/jviz/blob
         margin-top: 5px;
       }
 
+      /* Hide foot panel */
+      :host[no-footer] ::content .panel-foot { display: none !important; }
+
       /* Apply to all button on the header */
       :host ::content .panel-head jviz-btn
       {
@@ -202,6 +208,8 @@ jviz_panel.properties.detail = { type: String, value: '', reflectToAttribute: tr
 jviz_panel.properties.arrow = { type: Boolean, value: true, reflectToAttribute: true };
 jviz_panel.properties.closed = { type: Boolean, value: false, reflectToAttribute: true };
 jviz_panel.properties.loading = { type: Boolean, value: false, reflectToAttribute: true };
+jviz_panel.noHeader = { type: Boolean, value: false, reflectToAttribute: true };
+jviz_panel.noFooter = { type: Boolean, value: false, reflectToAttribute: true };
 
 //Toggle panel closed
 jviz_panel.toggle = function(){ this.closed = !this.closed; };
