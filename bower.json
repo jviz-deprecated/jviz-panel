@@ -5,11 +5,11 @@
   "dependencies":
   {
     "polymer": "Polymer/polymer#^1.4.0",
-    "jviz": "https://github.com/jviz/jviz.git#dev",
-    "jviz-styles": "https://github.com/jviz/jviz-styles.git#dev",
-    "jviz-loading": "https://github.com/jviz/jviz-loading.git#dev",
-    "jviz-btn": "https://github.com/jviz/jviz-btn.git#dev",
-    "jviz-icons": "https://github.com/jviz/jviz-icons.git#dev"
+    "jviz": "jviz/jviz#dev",
+    "jviz-styles": "jviz/jviz-styles#dev",
+    "jviz-loading": "jviz/jviz-loading#dev",
+    "jviz-btn": "jviz/jviz-btn#dev",
+    "jviz-icons": "jviz/jviz-icons#dev"
   },
 	"license": "MIT",
   "authors": [ "Josemi Juanes <josemijuanes@gmail.com>" ],
